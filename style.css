@@ -1,0 +1,38 @@
+h1 {
+    text-align: center;
+}
+
+.title1-player {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-choices {
+    display: flex;
+    min-height: 10vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn,
+#computer-panel,
+#player-panel {
+    border: .4rem solid black;
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem .5rem;
+    width: 10rem;
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 .5rem black;
+}
+
+.div-player,
+.div-computer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
