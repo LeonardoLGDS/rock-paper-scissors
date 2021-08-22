@@ -1,7 +1,6 @@
 //PROJECT: ROCK PAPER SCISSORS
 
-// let counterWin = 0; 
-// let counterLose = 0;
+
 // let arrayOfResults = game(3);
 
 // for (var i = 0; i < arrayOfResults.length; i++) {
@@ -16,7 +15,8 @@
 //   alert("The computer won!");
 // }
 // else alert("It's a tie!");
-
+let counterWin = 0; 
+let counterLose = 0;
 let computerPlay = ["rock", "paper", "scissors"];
 const btn = document.querySelectorAll(".btn");
 
@@ -25,12 +25,36 @@ btn.forEach((button) => {
         let playerChoice = button.id;
         let computerSelection = computerPlay[Math.floor(Math.random() * 3)];
 
-        const containerCompResults = document.querySelector('#computer-result');
+        const containerCompResults = document.querySelector("#computer-result");
         containerCompResults.textContent = computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1);
 
-        const containerPlayerResults = document.querySelector('#player-result');
-        containerPlayerResults.textContent = playRound(playerChoice, computerSelection);
-    });
+        const containerPlayerResults = document.querySelector("#player-result");
+        let playerSelection = playRound(playerChoice, computerSelection);
+        containerPlayerResults.textContent = playerSelection;
+                      
+        counterWin += playerSelection.includes("win");
+		    counterLose += playerSelection.includes("lose");
+        
+        document.querySelector("#pscore-count").textContent = counterWin;
+        document.querySelector("#cscore-count").textContent = counterLose;
+        
+        if(counterWin == 5) {
+        	alert("Player victory!");
+          counterWin = 0;
+          counterLose = 0;
+        	document.querySelector("#pscore-count").textContent = counterWin;
+        	document.querySelector("#cscore-count").textContent = counterLose;
+          containerPlayerResults.textContent = "Want to play again?";
+        }
+        else if (counterLose == 5) {
+        	alert("Computer victory!");
+          counterWin = 0;
+          counterLose = 0;
+        	document.querySelector("#pscore-count").textContent = counterWin;
+        	document.querySelector("#cscore-count").textContent = counterLose;
+          containerPlayerResults.textContent = "Want to play again?";
+        }
+	})
 });
 
 
